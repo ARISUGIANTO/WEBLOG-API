@@ -3,6 +3,21 @@ from rest_framework.response import Response
 from django.contrib.auth.models import User
 from api.models import Post, Comment, Category
 from api.serializers import UserSerializer, PostSerializer, CommentSerializer, CategorySerializer
+from django.shortcuts import render
+
+def index(request):
+    # Definisikan rute yang relevan secara langsung dengan deskripsinya
+    api_routes = [
+        {'endpoint': 'User', 'description': 'Daftar dan buat pengguna', 'url': 'api/users/'},
+        {'endpoint': 'Post', 'description': 'Daftar dan buat postingan', 'url': 'api/posts/'},
+        {'endpoint': 'Comment', 'description': 'Daftar dan buat komentar', 'url': 'api/comments/'},
+        {'endpoint': 'Category', 'description': 'Daftar dan buat kategori', 'url': 'api/categories/'},
+    ]
+
+    return render(request, 'index.html', {'api_routes': api_routes})
+
+
+
 
 class UserList(generics.ListCreateAPIView):
     queryset = User.objects.all()

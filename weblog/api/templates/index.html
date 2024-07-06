@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <title>Daftar Rute API</title>
+    <link rel="stylesheet" href="{% static 'api/styles.css' %}">
+</head>
+<body>
+    <h1>Daftar Rute API</h1>
+    <p></p>
+    <table>
+        <thead>
+            <tr>
+                <th>Endpoint</th>
+                <th>Description</th>
+                <th>URL</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for route in api_routes %}
+                <tr>
+                    <td>{{ route.endpoint }}</td>
+                    <td>{{ route.description }}</td>
+                    <td><button><a href="{{ route.url }}" target="_blank" style="text-decoration: none;">{{ route.url }}</a></button></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

@@ -5,9 +5,8 @@ class Post(models.Model):
     title = models.CharField(max_length=100, blank=True, default='')
     body = models.TextField(blank=True, default='')
     owner = models.ForeignKey('auth.User', related_name='posts', on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.created
+    class Meta:
+        ordering = ['created']
 
 class Comment(models.Model):
     created = models.DateTimeField(auto_now_add=True)

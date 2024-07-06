@@ -1,8 +1,10 @@
 from django.urls import path
 from rest_framework.urlpatterns import format_suffix_patterns
 from . import views
+from .views import index, UserList, UserRetrieveUpdateDestroy, PostList, PostRetrieveUpdateDestroy, CommentList, CommentRetrieveUpdateDestroy, CategoryList, CategoryRetrieveUpdateDestroy
 
 urlpatterns = [
+    path('', index, name='index'),  # Tambahkan baris ini
     path('users/', views.UserList.as_view(), name='user-list-create'),
     path('users/<int:pk>/', views.UserRetrieveUpdateDestroy.as_view(), name='user-retrieve-update-destroy'),
     path('posts/', views.PostList.as_view(), name='post-list-create'),
